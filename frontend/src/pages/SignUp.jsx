@@ -17,6 +17,18 @@ const SignUp = () => {
     password: "",
   });
 
+  useEffect(() => {
+    if (isError) {
+      alert(message);
+    }
+
+    if (isSuccess || user) {
+      navigate("/login");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -38,15 +50,8 @@ const SignUp = () => {
       password,
     };
 
-    dispatch(register(userData))
-      .unwrap()
-      .then(() => {
-        navigate("/login");
-        alert("User registerted successfully");
-      })
-      .catch(() => {
-        alert("Something went wrong");
-      });
+    dispatch(register(userData));
+    alert("User registerted successfully");
   };
 
   const onSave = formData.username && formData.email && formData.password;
@@ -120,7 +125,7 @@ const SignUp = () => {
             fontSize: "16px",
             fontWeight: "600",
             textAlign: "center",
-            color: "white",
+            color: "white"
           }}
         >
           {isLoading ? <CircularProgress /> : "Sign Up"}

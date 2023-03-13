@@ -40,7 +40,7 @@ const Blogs = () => {
             >
               <Link to={`/blog/${blog?._id}`}>
                 <img
-                  src={`blog.image`}
+                  src={blog?.image}
                   alt={blog?.title}
                   style={{
                     width: "100%",
@@ -60,7 +60,7 @@ const Blogs = () => {
                   variant="p"
                   sx={{ opacity: "0.85", lineHeight: "24px" }}
                 >
-                  {blog?.description.substring(0,100) + "..."}
+                  {blog?.description.substring(0,200) + "..."}
                 </Typography>
               </Stack>
             </Box>
