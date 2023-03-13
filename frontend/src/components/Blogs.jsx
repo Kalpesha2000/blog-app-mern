@@ -40,7 +40,7 @@ const Blogs = () => {
             >
               <Link to={`/blog/${blog?._id}`}>
                 <img
-                  src={`https://blog-app-backend-q0dd.onrender.com/blog?.image`}
+                  src={`blog.image`}
                   alt={blog?.title}
                   style={{
                     width: "100%",
