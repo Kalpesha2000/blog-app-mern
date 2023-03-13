@@ -19,9 +19,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if (isError) {
-      alert("Something went wrong");
+      alert(message);
     }
-    
+
     if (isSuccess || user) {
       navigate("/login");
     }

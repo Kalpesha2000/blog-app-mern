@@ -40,7 +40,10 @@ const createComment = async (req, res, next) => {
 const getAllComents = async (req, res, next) => {
   try {
     const { id: userId } = req.user;
-    const comments = await Comment.find().populate("user", "username email");
+    const comments = await Comment.find().populate(
+      "user",
+      "username email"
+    );
     if (!comments) {
       return res.status(404).json("Comments not found with this blog");
     }
@@ -53,9 +56,11 @@ const getAllComents = async (req, res, next) => {
 
 const getSingleComment = async (req, res, next) => {
   try {
-    const comment = await Comment.findById(req.params.id)
-      .populate("user", "username email")
-     
+    const comment = await Comment.findById(req.params.id).populate(
+      "user",
+      "username email"
+    );
+
     if (!comment) {
       return res.status(404).json("Comments not found with thsi id");
     }
@@ -71,11 +76,9 @@ const updateComment = async (req, res, next) => {
     const { content } = req.body;
     const comment = await Comment.findOneAndUpdate(
       { _id: req.params.id, user: req.user.id },
-      { content },
+      req.body,
       { new: true }
     );
-
-
 
     if (!comment) {
       return res.status(404).json("Not found");

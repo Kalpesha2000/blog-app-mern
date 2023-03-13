@@ -15,6 +15,10 @@ const Login = () => {
     email: "",
     password: "",
   });
+  let path = "/";
+  if (location.state) {
+    path = location.state.path;
+  }
 
   useEffect(() => {
     if (isError) {
@@ -22,11 +26,11 @@ const Login = () => {
     }
 
     if (isSuccess || user) {
-      navigate("/");
+      navigate(path);
     }
 
     dispatch(reset());
-  }, [user, isError, isSuccess, message, navigate, dispatch]);
+  }, [user, isError, isSuccess, message, navigate, dispatch, path]);
 
   const handleChange = (event) => {
     setFormData({
