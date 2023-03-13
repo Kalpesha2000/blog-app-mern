@@ -11,7 +11,7 @@ const createPost = async (req, res, next) => {
     if (!title || !description || !req.file) {
       return res.status(400).json("All fiels required in post");
     }
-    const file = `${process.env.BASE_URL}/${req.file.filename}`;
+    const file = req.file.filename;
 
     let post = new Posts({
       title,

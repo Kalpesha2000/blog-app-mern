@@ -60,7 +60,7 @@ const Blogs = () => {
                   variant="p"
                   sx={{ opacity: "0.85", lineHeight: "24px" }}
                 >
-                  {blog?.description}
+                  {blog?.description.substring(0,100) + "..."}
                 </Typography>
               </Stack>
             </Box>
